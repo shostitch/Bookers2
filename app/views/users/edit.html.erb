@@ -1,3 +1,5 @@
+<%= render 'layouts/error_messages', model: @user %>
+
 <h1>User info</h1>
 <%= form_with model: @user do |f| %>
   <label for="inputName">Name</label>

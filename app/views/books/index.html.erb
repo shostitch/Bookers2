@@ -1,17 +1,13 @@
-<h1>New book</h1>
-<%= form_with model: @book,url:books_path,method: :post do |f| %>
-  <div class = "book_title">Title</div>
-  <%= f.text_field :title %>
-  <div class = "body">Opinion</div>
-  <%= f.text_area :body %>
-  <%= f.submit "Create Book" %>
-<% end %>
+<%= render partial: "list", locals: { book: @book , user: @user} %>
 
 <h1>Books</h1>
 <p>Title </p>
   <p>Opinion </p>
 <% @books.each do |book|%>
 <div>
+<%= link_to user_path(book.user.id) do %>
+  <%= image_tag book.user.get_profile_image(100,100)%>
+<% end %>
   <%= link_to book.title,book_path(book.id) %>
   <%= book.body %>
 </div>
